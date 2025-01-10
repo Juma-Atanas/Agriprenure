@@ -1,0 +1,33 @@
+name: Deploy Flet Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Tests
+        run: |
+          python -m unittest discover tests
+
+      - name: Deploy to Server
+        env:
+          FLET_SERVER_URL: ${{ secrets.FLET_SERVER_URL }}
+        run: |
+          python app.py
