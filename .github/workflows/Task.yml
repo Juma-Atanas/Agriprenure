@@ -1,0 +1,40 @@
+name: Deploy Flet Web App
+
+# Define event triggers
+on:
+  push:                # Trigger workflow when code is pushed
+    branches:
+      - main           # Only run the workflow for pushes to the `main` branch
+  pull_request:         # Trigger workflow when a pull request is created/updated
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up the Python environment
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Step 4: Run tests (if any exist)
+      - name: Run Tests
+        run: |
+          python -m unittest discover tests
+
+      # Step 5: Deploy or run the application
+      - name: Deploy Application
+        run: |
+          python main.py
