@@ -1,0 +1,31 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environments
+venv/
+env/
+
+# Database files
+*.sqlite3
+*.db
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Environment variables
+.env
+
+# Static analysis tools
+.mypy_cache/
+pytest_cache/
+
+# IDE and editor config files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
