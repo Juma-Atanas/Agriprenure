@@ -51,4 +51,4 @@ def main(page:Page):
     page.add(Text("The furious me the future me th great me"))
     page.padding=0
 if __name__=="__main__":
-    app(target=main)#, assets_dir="assets", upload_dir='uploaded_images', web_renderer=(WebRenderer.HTML), view=WEB_BROWSER, base_path="/home")
+    app(target=main, assets_dir="assets", upload_dir='uploaded_images', web_renderer=(WebRenderer.HTML), view=WEB_BROWSER, base_path="/home")
