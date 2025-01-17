@@ -8,9 +8,6 @@ from Chatspg import Chats
 from passrecovery import recover_account
 from Profile import farmer
 from Dash import dash
-
-login=loginpg(page)
-add=add(page)
 def main(page:Page):
     def route_change(route):
         #auser=page.session.get('user')
@@ -23,10 +20,10 @@ def main(page:Page):
             page.views.append(home(page))
             page.update()
         if page.route =='/login':
-            page.views.append(login)
+            page.views.append(loginpg(page))
             page.update()
         if page.route =='/add_item':
-            page.views.append(add)
+            page.views.append(add(page))
             page.update()
         if page.route=='/cancel':
             page.views.pop()
