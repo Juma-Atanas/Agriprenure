@@ -9,6 +9,8 @@ from passrecovery import recover_account
 from Profile import farmer
 from Dash import dash
 
+login=loginpg(page)
+add=add(page)
 def main(page:Page):
     def route_change(route):
         #auser=page.session.get('user')
@@ -21,10 +23,10 @@ def main(page:Page):
             page.views.append(home(page))
             page.update()
         if page.route =='/login':
-            page.views.append(loginpg(page))
+            page.views.append(login)
             page.update()
         if page.route =='/add_item':
-            page.views.append(add(page))
+            page.views.append(add)
             page.update()
         if page.route=='/cancel':
             page.views.pop()
@@ -51,4 +53,4 @@ def main(page:Page):
     page.go("/home")
     page.padding=0
 #if __name__=="__main__":
-app(target=main, assets_dir="assets", upload_dir='uploaded_images')#, web_renderer=(WebRenderer.HTML), view=WEB_BROWSER, base_path="/home")
+app(target=main, assets_dir="assets", upload_dir='uploaded_images', secret_key="hello")#, web_renderer=(WebRenderer.HTML), view=WEB_BROWSER, base_path="/home")
